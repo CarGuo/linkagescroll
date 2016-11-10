@@ -5,14 +5,6 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by moon.zhong on 2015/2/11.
- */
-
-/**
- * Created by no1 on 2016/7/14.
- */
-
 
 public class AlphaDividerItemDecoration extends RecyclerView.ItemDecoration {
 

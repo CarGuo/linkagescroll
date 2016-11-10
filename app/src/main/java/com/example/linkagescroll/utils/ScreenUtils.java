@@ -5,20 +5,9 @@ package com.example.linkagescroll.utils;
  */
 
 
-import android.app.Activity;
-import android.app.KeyguardManager;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.os.Build;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-
-import java.lang.reflect.Method;
 
 public class ScreenUtils {
 
