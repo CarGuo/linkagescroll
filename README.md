@@ -4,7 +4,7 @@
 
 这是效果图片，GIF压缩的有些失真了
 
-<img src="https://github.com/CarGuo/linkagescroll/blob/master/device-2016-11-10-151539.gif" width="120px" height="213px"/>
+<img src="https://github.com/CarGuo/linkagescroll/blob/master/device-2016-11-10-151539.gif" width="240px" height="426px"/>
 
 <h4>* 界面由两个viewpager组成，有顶部的banner是底部的viewpager,viewpger里嵌套了recyclerView，recyclerView有上拉加载更多</h4>
 
