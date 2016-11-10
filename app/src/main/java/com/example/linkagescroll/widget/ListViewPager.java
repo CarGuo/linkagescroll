@@ -35,6 +35,10 @@ public class ListViewPager extends ViewPager {
         this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
+
+    /**
+     * 通过手势判断，设置焦点的切换和刷新的是否可用，根据不同手势势能刷新
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 

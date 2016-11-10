@@ -33,9 +33,12 @@ public class BannerViewPager extends ViewPager {
         this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
+    /**
+     * 通过手势判断，设置焦点的切换和刷新的是否可用，让banner滑动顺畅
+     */
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev){
-        switch (ev.getAction()){
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mDownX = ev.getX();
                 mDownY = ev.getY();
@@ -64,7 +67,8 @@ public class BannerViewPager extends ViewPager {
         return super.dispatchTouchEvent(ev);
     }
 
-    @Override public boolean onInterceptTouchEvent(MotionEvent ev) {
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
         return !mLocked && super.onInterceptTouchEvent(ev);
     }
 

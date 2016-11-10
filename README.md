@@ -12,6 +12,8 @@
 
 <h4>* 外部使用了SwipeRefreshLayout实现刷新功能</h4>
 
+<h4>* 底部recyclerView可以穿过顶部停靠的tab</h4>
+
 <h4>* PagerSlidingTabStrip实现了tab的停靠与viewPager的联动切换 </h4>
 
 <h4>* viewpager与刷新与tab之间实现联动</h4>
