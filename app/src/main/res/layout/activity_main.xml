@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/scroll_swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/scroll_coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.linkagescroll.widget.ListViewPager
+                android:id="@+id/scroll_Viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/scroll_pagerSlidingTabStrip_line"
+                android:layout_marginTop="@dimen/banner_viewpager_height_margin"
+                android:background="@color/transparent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/scroll_appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent">
+
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/scroll_collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <ImageView
+                        android:id="@+id/scroll_imageBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/xxx1"
+                        />
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/scroll_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:minHeight="@dimen/banner_strip_height"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                        app:titleMarginTop="15dp" />
+
+                    <com.example.linkagescroll.widget.PagerSlidingTabStrip
+                        android:id="@+id/scroll_pagerSlidingTabStrip"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/banner_strip_height"
+                        android:layout_gravity="bottom"
+                        android:background="#82000000"
+                        app:pstsIndicatorHeight="2dp" />
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+            </android.support.design.widget.AppBarLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>
