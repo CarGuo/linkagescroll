@@ -56,8 +56,6 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        refresh();
-
     }
 
 
@@ -120,17 +118,44 @@ public class ListFragment extends Fragment {
         listItemRecycler.setLayoutManager(linearLayoutManager);
         listItemRecycler.addItemDecoration(new AlphaDividerItemDecoration(getDevider(), AlphaDividerItemDecoration.LIST));
         listItemRecycler.setPullRefreshEnabled(false);
-        listItemRecycler.setLoadingMoreEnabled(false);
         listItemRecycler.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
 
+        resolveData();
+
+        recyclerBaseAdapter = new RecyclerBaseAdapter(getActivity(), dataList);
+        listItemRecycler.setAdapter(recyclerBaseAdapter);
+        listItemRecycler.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                //使用的是外部全局刷新
+            }
+
+            @Override
+            public void onLoadMore() {
+                if (isRefreshing())
+                    return;
+                setRefreshing(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        setRefreshing(false);
+                        resolveData();
+                        listItemRecycler.loadMoreComplete();
+                    }
+                }, 2000);
+            }
+        });
+
+
+    }
+
+    private void resolveData() {
         for (int i = 0; i < 19; i++) {
             RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
             dataList.add(recyclerDataModel);
         }
-
-        recyclerBaseAdapter = new RecyclerBaseAdapter(getActivity(), dataList);
-        listItemRecycler.setAdapter(recyclerBaseAdapter);
-
+        if (recyclerBaseAdapter != null)
+            recyclerBaseAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -146,6 +171,8 @@ public class ListFragment extends Fragment {
                 setRefreshing(false);
                 if (swipeRefreshLayout != null)
                     swipeRefreshLayout.setRefreshing(false);
+                dataList.clear();
+                resolveData();
             }
         }, 2000);
     }

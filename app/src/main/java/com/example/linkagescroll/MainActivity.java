@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.linkagescroll.adapter.ListFragmentPagerAdapter;
 import com.example.linkagescroll.adapter.ViewPagerAdapter;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     ListViewPager scrollViewpager;
     @BindView(R.id.scroll_imageBanner)
     BannerViewPager scrollImageBanner;
+    @BindView(R.id.scroll_imageBanner_layout)
+    RelativeLayout scrollImageBannerLayout;
     @BindView(R.id.scroll_toolbar)
     Toolbar scrollToolbar;
     @BindView(R.id.scroll_pagerSlidingTabStrip)
@@ -120,8 +123,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         fragmentList.add(fragment1);
         fragmentList.add(fragment2);
-        tabList.add("广场");
-        tabList.add("关注");
+        tabList.add("TAB1");
+        tabList.add("TAB2");
 
         scrollViewpager.setAdapter(fragmentPagerAdapter);
         scrollViewpager.setOffscreenPageLimit(2);
@@ -191,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
             scrollSwipeRefreshLayout.setEnabled(i == 0);
             scrollViewpager.setIsTop(i == 0);
             float alpha = 1 - (float) Math.abs(i) / (float) appBarLayout.getTotalScrollRange() * 1.0f;
-            scrollImageBanner.setAlpha(alpha);
+            scrollImageBannerLayout.setAlpha(alpha);
             resolveStripTabStyle(alpha, (int) ((1 - alpha) * tabScroll));
         }
     }
