@@ -11,7 +11,7 @@ import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.linkagescroll.R;
+import com.example.base.R;
 import com.jcodecraeer.xrecyclerview.progressindicator.indicator.BallBeatIndicator;
 import com.jcodecraeer.xrecyclerview.progressindicator.indicator.BallClipRotateIndicator;
 import com.jcodecraeer.xrecyclerview.progressindicator.indicator.BallClipRotateMultipleIndicator;

@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.linkagescroll.R;
+import com.example.base.R;
 import com.jcodecraeer.xrecyclerview.progressindicator.AVLoadingIndicatorView;
 
 import java.util.Date;

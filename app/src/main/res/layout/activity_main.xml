@@ -36,15 +36,16 @@
                     android:id="@+id/scroll_collapsingToolbarLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clipChildren="false"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                    <ImageView
+                    <com.example.linkagescroll.widget.BannerViewPager
                         android:id="@+id/scroll_imageBanner"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/xxx1"
-                        />
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:clipChildren="false"
+                        android:layout_height="200dp" />
 
                     <android.support.v7.widget.Toolbar
                         android:id="@+id/scroll_toolbar"

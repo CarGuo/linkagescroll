@@ -143,9 +143,9 @@ public class ListFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 setRefreshing(false);
-                swipeRefreshLayout.setRefreshing(false);
+                if (swipeRefreshLayout != null)
+                    swipeRefreshLayout.setRefreshing(false);
             }
         }, 2000);
     }

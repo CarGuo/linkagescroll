@@ -13,13 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.linkagescroll.adapter.ListFragmentPagerAdapter;
+import com.example.linkagescroll.adapter.ViewPagerAdapter;
 import com.example.linkagescroll.fragment.ListFragment;
 import com.example.linkagescroll.listener.DoubleClickListener;
 import com.example.linkagescroll.utils.ScreenUtils;
+import com.example.linkagescroll.widget.BannerViewPager;
 import com.example.linkagescroll.widget.ListViewPager;
 import com.example.linkagescroll.widget.PagerSlidingTabStrip;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     @BindView(R.id.scroll_Viewpager)
     ListViewPager scrollViewpager;
     @BindView(R.id.scroll_imageBanner)
-    ImageView scrollImageBanner;
+    BannerViewPager scrollImageBanner;
     @BindView(R.id.scroll_toolbar)
     Toolbar scrollToolbar;
     @BindView(R.id.scroll_pagerSlidingTabStrip)
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         scrollCollapsingToolbarLayout.setEnabled(false);
 
+        resolveBanner();
+
         resolveViewPager();
 
         setListener();
@@ -86,6 +89,20 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         scrollViewpager.setTouchPadding(height);
     }
+
+    private void resolveBanner() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            list.add("test");
+        }
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, list);
+        scrollImageBanner.setAdapter(viewPagerAdapter);
+        scrollImageBanner.setPageMargin(ScreenUtils.dip2px(this, 20));
+        scrollImageBanner.setSwipeRefreshLayout(scrollSwipeRefreshLayout);
+        scrollImageBanner.setOffscreenPageLimit(4);
+        scrollImageBanner.setCurrentItem(1);
+    }
+
 
     private void resolveViewPager() {
         scrollPagerSlidingTabStrip.setShouldExpand(true);
