@@ -5,7 +5,9 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-
+/**
+ * 实现分割线
+ */
 public class AlphaDividerItemDecoration extends RecyclerView.ItemDecoration {
 
     public final static int GRID = 0;

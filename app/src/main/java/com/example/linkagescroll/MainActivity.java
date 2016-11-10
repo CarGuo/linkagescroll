@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         setListener();
 
+
+        /**这是tab的高度，用来设置此高度后tab可以停靠*/
         int height = (int) getResources().getDimension(R.dimen.banner_strip_height);
 
         setViewHeight(scrollToolbar, ViewGroup.LayoutParams.MATCH_PARENT, height);
@@ -93,6 +95,9 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         scrollViewpager.setTouchPadding(height);
     }
 
+    /**
+     * 这是banner数据
+     */
     private void resolveBanner() {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -100,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         }
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, list);
         scrollImageBanner.setAdapter(viewPagerAdapter);
+        /**
+         * viewpager和父布局都设置了 android:clipChildren="false"
+         * 这里设置了类似画廊效果
+         * */
         scrollImageBanner.setPageMargin(ScreenUtils.dip2px(this, 20));
         scrollImageBanner.setSwipeRefreshLayout(scrollSwipeRefreshLayout);
         scrollImageBanner.setOffscreenPageLimit(4);
@@ -108,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
 
     private void resolveViewPager() {
+        /**设置了tab的样式*/
         scrollPagerSlidingTabStrip.setShouldExpand(true);
         scrollPagerSlidingTabStrip.setDividerColor(Color.WHITE);
         scrollPagerSlidingTabStrip.setIndicatorColor(Color.TRANSPARENT);
@@ -146,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
             @Override
             public void onPageSelected(int i) {
+                /**不同的recyclerView的列表对应的位置不同，需要处理对应的顶部banner是否隐藏*/
                 curTab = i;
                 scrollAppbar.removeOnOffsetChangedListener(MainActivity.this);
                 int scrollHeight = (i == 0) ? scrollOffsetSquare : scrollOffsetAttention;
@@ -177,14 +188,12 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         scrollViewpager.setCurrentItem(0);
     }
 
+    /**
+     * 根据appber的返回，判断此时的tab和banner是位置和显示效果
+     */
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
         if (i != scrollOffset) {
-            if (i == 0) {
-                //scrollImageBanner.goOnScroll();
-            } else {
-                //scrollImageBanner.pauseScroll();
-            }
             if (curTab == 0) {
                 scrollOffsetSquare = i;
             } else {
@@ -228,6 +237,9 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         });
     }
 
+    /**
+     * 双击回到顶部
+     */
     public void resolveToTop() {
         if (curTab == 0) {
             refreshToTop1();

@@ -36,6 +36,14 @@ public class ListFragment extends Fragment {
 
     LinearLayoutManager linearLayoutManager;
 
+
+    protected int devider;
+    protected boolean isRefreshing;
+
+    protected RecyclerBaseAdapter recyclerBaseAdapter;
+    protected List<RecyclerDataModel> dataList = new ArrayList<>();
+    protected SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,42 +83,12 @@ public class ListFragment extends Fragment {
     }
 
 
-    protected int devider;
-    protected boolean isRefreshing;
-    protected long timestamp;
-    protected int page = 2;
-
-    protected RecyclerBaseAdapter recyclerBaseAdapter;
-    protected List<RecyclerDataModel> dataList = new ArrayList<>();
-    protected SwipeRefreshLayout swipeRefreshLayout;
-
-
     public int getDevider() {
         return devider;
     }
 
     public void setDevider(int devider) {
         this.devider = devider;
-    }
-
-    public void setListData(List list) {
-        this.dataList = list;
-        if (recyclerBaseAdapter != null) {
-            recyclerBaseAdapter.setListData(list);
-        }
-    }
-
-
-    public boolean isRefreshing() {
-        return isRefreshing;
-    }
-
-    public void setRefreshing(boolean refreshing) {
-        isRefreshing = refreshing;
-    }
-
-    public void setSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
-        this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
     private void initView() {
@@ -177,10 +155,25 @@ public class ListFragment extends Fragment {
         }, 2000);
     }
 
+    /**
+     * 回到顶部
+     */
     public void changeToTop() {
         listItemRecycler.stopNestedScroll();
         linearLayoutManager.setSmoothScrollbarEnabled(true);
         linearLayoutManager.scrollToPosition(0);
+    }
+
+    public boolean isRefreshing() {
+        return isRefreshing;
+    }
+
+    public void setRefreshing(boolean refreshing) {
+        isRefreshing = refreshing;
+    }
+
+    public void setSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
+        this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
     public RecyclerView getScrollableView() {
